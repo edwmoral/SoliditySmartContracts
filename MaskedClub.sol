@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 // http://remix.ethereum.org/ 
 
+// Payable NFT minting Smart contract
+
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -121,8 +123,7 @@ contract MaskedClub is ERC721, Ownable {
    function reserveMasked(string[] memory URIs) public onlyOwner {        
         require(URIs.length + MintedMasked <= MaxMasked, "Purchase would exceed max supply of Masked");
         require(URIs.length  <= 30, "Cannot generate more than 30 NFTS per at once");      
-      
-        
+              
         for (uint256  i = 0; i < URIs.length; i++) {          
             mint(msg.sender, URIs[i]);            
         }
